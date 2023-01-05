@@ -38,6 +38,7 @@ const Contact: FunctionComponent = () => {
 
     const validateForm = () => {
         let newForm: Form = form;
+        
         // Validator name
         if(!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)) {
             const errorMsg: string = 'Votre nom est requis (3-25).';
@@ -81,25 +82,23 @@ const Contact: FunctionComponent = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const isFormValid = validateForm();
-        if(isFormValid){
-            console.log(form);
-            let contactData = {
-                name: form.name.value,
-                email: form.email.value,
-                subject: form.subject.value,
-                content: form.content.value,
-            };
-            ServicesApi.sendMessage(contactData).then((res) => {
-                console.log(res);
-                setForm({
-                    name: { value: "", isValid: false },
-                    email: { value: "", isValid: false },
-                    subject: { value: "", isValid: false },
-                    content: { value: "", isValid: false },
-                });
+
+        console.log(form);
+        let contactData = {
+            name: form.name.value,
+            email: form.email.value,
+            subject: form.subject.value,
+            content: form.content.value,
+        };
+        ServicesApi.sendMessage(contactData).then((res) => {
+            console.log(res);
+            setForm({
+                name: { value: "", isValid: false },
+                email: { value: "", isValid: false },
+                subject: { value: "", isValid: false },
+                content: { value: "", isValid: false },
             });
-        }
-        
+        });
     };
 
     return (
@@ -148,12 +147,6 @@ const Contact: FunctionComponent = () => {
                                         id="name"
                                         placeholder="Votre Nom"
                                     />
-                                                                                            {/* error */}
-                        {form.name.error && (
-                            <div className="card-panel red accent-1">
-                                {form.name.error}
-                            </div>
-                        )}
                                 </div>
                                 <div className="col-md-6 form-group mt-3 mt-md-0">
                                     <input
@@ -166,12 +159,6 @@ const Contact: FunctionComponent = () => {
                                         value={form.email.value}
                                     />
                                 </div>
-                                                                                        {/* error */}
-                        {form.email.error && (
-                            <div className="card-panel red accent-1">
-                                {form.email.error}
-                            </div>
-                        )}
                             </div>
                             <div className="form-group mt-3">
                                 <input
@@ -183,12 +170,6 @@ const Contact: FunctionComponent = () => {
                                     value={form.subject.value}
                                     placeholder="Sujet"
                                 />
-                                                        {/* error */}
-                        {form.subject.error && (
-                            <div className="card-panel red accent-1">
-                                {form.subject.error}
-                            </div>
-                        )}
                             </div>
                             <div className="form-group mt-3">
                                 <input
@@ -200,12 +181,6 @@ const Contact: FunctionComponent = () => {
                                     value={form.content.value}
                                     placeholder="Message"
                                 />
-                        {/* error */}
-                        {form.content.error && (
-                            <div className="card-panel red accent-1">
-                                {form.content.error}
-                            </div>
-                        )}
                             </div>
 
                             <div className="my-3">
@@ -219,6 +194,12 @@ const Contact: FunctionComponent = () => {
                                 <button type="submit">Send Message</button>
                             </div>
                         </form>
+                        {/* error */}
+                        {form.name.error && (
+                            <div className="card-panel red accent-1">
+                                {form.name.error}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
