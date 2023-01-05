@@ -1,7 +1,8 @@
 import React from "react";
 import { FunctionComponent } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Service from "../components/Service";
+import ServiceDetail from "../pages/ServiceDetail";
+import Service from "../components/ServiceCard";
 import AllPage from "../pages/AllPage";
 import Home from "../pages/Home";
 
@@ -12,7 +13,7 @@ const Routering: FunctionComponent = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/all" element={<AllPage />} />
-                    <Route path="/services/:service" element={<Service />} />
+                    <Route path="/services/:service" element={<ServiceDetail />} />
 
                     {/* <Route path="/error" element={<Error />} /> */}
                 </Routes>

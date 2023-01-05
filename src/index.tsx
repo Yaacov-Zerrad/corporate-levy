@@ -5,10 +5,12 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-
+import axios from 'axios';
 const container = document.getElementById('root')!;
 const root = createRoot(container);
-
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.withCredentials = true;
 root.render(
   <React.StrictMode>
     <Provider store={store}>

@@ -1,0 +1,150 @@
+<div className="form-group mt-3">
+                                <textarea
+                                    className="form-control"
+                                    name="message"
+                                    placeholder="Message"
+                                    // onChange={handleInputChange}
+                                    value={form.content.value}
+                                    required
+                                ></textarea>
+                                {/* error */}
+                                {/* {form.content.error && (
+                                    <div className="card-panel red accent-1">
+                                        {form.content.error}
+                                    </div>
+                                )} */}
+                                {/* //row='5' */}
+                            </div>
+
+                        const validateForm = () => {
+        let newForm: Form = form;
+
+        // Validator name
+        if (!/^[a-zA-Zàéè ]{4,25}$/.test(form.name.value)) {
+            const errorMsg: string = "Votre nom est requis (4-25).";
+            const newField: Field = {
+                value: form.name.value,
+                error: errorMsg,
+                isValid: false,
+            };
+            newForm = { ...newForm, ...{ name: newField } };
+            console.log('1 val');
+            
+        } else {
+            const newField: Field = {
+                value: form.name.value,
+                error: "",
+                isValid: true,
+            };
+            newForm = { ...newForm, ...{ name: newField } };
+        }
+        // Validator email
+        if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.email.value)
+        ) {
+            const errorMsg: string = "Veillez indiquer un email valid.";
+            
+            const newField: Field = {
+                value: form.email.value,
+                error: errorMsg,
+                isValid: false,
+            };
+            newForm = { ...newForm, ...{ name: newField } };
+            console.log('2 val');
+
+        } else {
+            const newField: Field = {
+                value: form.email.value,
+                error: "",
+                isValid: true,
+            };
+            newForm = { ...newForm, ...{ name: newField } };
+        }
+        // Validator subject
+        if (!/^[a-zA-Zàéè ]{3,25}$/.test(form.subject.value)) {
+            const errorMsg: string = "Sn sujet est requis (3-25).";
+            const newField: Field = {
+                value: form.subject.value,
+                error: errorMsg,
+                isValid: false,
+            };
+            newForm = { ...newForm, ...{ name: newField } };
+            
+        } else {
+            console.log('3 val');
+            const newField: Field = {
+                value: form.subject.value,
+                error: "",
+                isValid: true,
+            };
+            newForm = { ...newForm, ...{ name: newField } };
+        }
+
+        // Validator content
+        if (!/^[a-zA-Zàéè ]{5,}$/.test(form.content.value)) {
+            const errorMsg: string = "Un message est requis (min 5 lettres).";
+            const newField: Field = {
+                value: form.content.value,
+                error: errorMsg,
+                isValid: false,
+            };
+            newForm = { ...newForm, ...{ name: newField } };
+            
+        } else {
+            console.log('4 val');
+            const newField: Field = {
+                value: form.content.value,
+                error: "",
+                isValid: true,
+            };
+            newForm = { ...newForm, ...{ name: newField } };
+        }
+
+        setForm(newForm);
+       
+        return newForm.name.isValid === true
+             &&
+            newForm.email.isValid === true &&
+            newForm.subject.isValid === true &&
+            newForm.content.isValid === true
+        
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const isFormValid = validateForm();
+        console.log(isFormValid);
+
+        if (isFormValid) {
+            console.log("sdfg");
+            let contact = {
+                name: form.name.value,
+                email: form.email.value,
+                subject: form.subject.value,
+                content: form.content.value,
+            };
+            ServicesApi.sendMessage(contact);
+            setForm({
+                name: { value: null, isValid: false },
+                email: { value: null, isValid: false },
+                subject: { value: null, isValid: false },
+                content: { value: null, isValid: false },
+            })
+        }
+    };
+
+    const sendMessage = (contact: any) => {
+      ServicesService.sendMessage(contact)
+      .then((res)=>{
+        console.log(res)
+        setForm({
+          name: { value: null, isValid: false },
+          email: { value: null, isValid: false },
+          subject: { value: null, isValid: false },
+          content: { value: null, isValid: false },
+        });
+      })
+      console.log("sended");
+
+    };

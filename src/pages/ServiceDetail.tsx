@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 
 
-const Service:FunctionComponent = () => {
+const ServiceDetail:FunctionComponent = () => {
 
     return (
         <div className="">
@@ -10,4 +10,4 @@ const Service:FunctionComponent = () => {
     )
 }
 
-export default Service
+export default ServiceDetail

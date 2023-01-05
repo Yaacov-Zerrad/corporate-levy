@@ -3,8 +3,8 @@ import Testimony from "../components/ Testimony";
 import Contact from "../components/Contact";
 import Facts from "../components/Facts";
 import Header from "../components/Header";
-import Services from "../components/Services";
-import SlidImg from "../components/SlidImg";
+import Services from "../components/ServicesList";
+import SlidImg from "../components/LastPosts";
 
 const Home: FunctionComponent = () => {
     return (
