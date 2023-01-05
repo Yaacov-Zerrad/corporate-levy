@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import ServicesApi from "../services/get-api-address";
-import ServicesService from "../services/get-api-address";
 
 // prepa for form
 type Field = {
@@ -17,10 +16,10 @@ type Form = {
 
 const Contact: FunctionComponent = () => {
     const [form, setForm] = useState<Form>({
-        name: { value: null, isValid: false },
-        email: { value: null, isValid: false },
-        subject: { value: null, isValid: false },
-        content: { value: null, isValid: false },
+        name: { value: null, isValid: true },
+        email: { value: null, isValid: true },
+        subject: { value: null, isValid: true },
+        content: { value: null, isValid: true },
     });
 
     const handleInputChange = (
@@ -28,77 +27,127 @@ const Contact: FunctionComponent = () => {
     ): void => {
         const fieldName: string = e.target.name;
         const fieldValue: string = e.target.value;
-        const newField: Field = {
+        const newField = {
             [fieldName]: { value: fieldValue },
-            value: fieldValue,
         };
         setForm({ ...form, ...newField });
     };
-    useEffect(() => {}, [form]);
+    useEffect(() => {
+        // console.log(form);
+    }, [form]);
 
-    const validateForm = () => {
-        let newForm: Form = form;
-        
+    const validateForm = (form: any) => {
+        let newForm = form;
+
         // Validator name
-        if(!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)) {
-            const errorMsg: string = 'Votre nom est requis (3-25).';
-            const newField: Field = { value: form.name.value, error: errorMsg, isValid: false };
+        if (!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)) {
+            const errorMsg: string = "Votre nom est requis (3-25).";
+            const newField: Field = {
+                value: form.name.value,
+                error: errorMsg,
+                isValid: false,
+            };
             newForm = { ...newForm, ...{ name: newField } };
         } else {
-            const newField: Field = { value: form.name.value, error: '', isValid: true };
+            const newField: Field = {
+                value: form.name.value,
+                error: "",
+                isValid: true,
+            };
             newForm = { ...newForm, ...{ name: newField } };
+        }
+        // Validator email
+        if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.email.value)
+        ) {
+            const errorMsg: string = "Une address mail valid est requis";
+            const newField: Field = {
+                value: form.email.value,
+                error: errorMsg,
+                isValid: false,
+            };
+            newForm = { ...newForm, ...{ email: newField } };
+        } else {
+            const newField: Field = {
+                value: form.email.value,
+                error: "",
+                isValid: true,
+            };
+            newForm = { ...newForm, ...{ email: newField } };
         }
 
-        // Validator email
-        if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.email.value)) {
-            const errorMsg: string = 'Une address mail valid est requis';
-            const newField: Field = { value: form.email.value, error: errorMsg, isValid: false };
-            newForm = { ...newForm, ...{ name: newField } };
-        } else {
-            const newField: Field = { value: form.email.value, error: '', isValid: true };
-            newForm = { ...newForm, ...{ name: newField } };
-        }
         // Validator subject
-        if(!/^[a-zA-Zàéè ]{3,25}$/.test(form.subject.value)) {
-            const errorMsg: string = 'Un sujet requis (3-25).';
-            const newField: Field = { value: form.subject.value, error: errorMsg, isValid: false };
-            newForm = { ...newForm, ...{ name: newField } };
+        if (!/^[a-zA-Zàéè ]{3,25}$/.test(form.subject.value)) {
+            const errorMsg: string = "Un sujet requis (3-25).";
+            const newField: Field = {
+                value: form.subject.value,
+                error: errorMsg,
+                isValid: false,
+            };
+            newForm = { ...newForm, ...{ subject: newField } };
         } else {
-            const newField: Field = { value: form.subject.value, error: '', isValid: true };
-            newForm = { ...newForm, ...{ name: newField } };
+            const newField: Field = {
+                value: form.subject.value,
+                error: "",
+                isValid: true,
+            };
+            newForm = { ...newForm, ...{ subject: newField } };
         }
         // Validator content
-        if(!/^[a-zA-Zàéè ]{10,955}$/.test(form.content.value)) {
-            const errorMsg: string = 'Un Message est requis.(min 10)';
-            const newField: Field = { value: form.content.value, error: errorMsg, isValid: false };
-            newForm = { ...newForm, ...{ name: newField } };
+        if (!/^[a-zA-Zàéè ]{1,1000}$/.test(form.content.value)) {
+            const errorMsg: string = "Un Message est requis. (min 10)";
+            const newField: Field = {
+                value: form.content.value,
+                error: errorMsg,
+                isValid: false,
+            };
+            newForm = { ...newForm, ...{ content: newField } };
         } else {
-            const newField: Field = { value: form.content.value, error: '', isValid: true };
-            newForm = { ...newForm, ...{ name: newField } };
+            const newField: Field = {
+                value: form.content.value,
+                error: "",
+                isValid: true,
+            };
+            newForm = { ...newForm, ...{ content: newField } };
         }
+
         setForm(newForm);
-        return newForm.name.isValid && newForm.email.isValid && newForm.subject.isValid && newForm.content.isValid;
+        console.log(newForm);
+
+        return (
+            newForm.name.isValid &&
+            newForm.email.isValid &&
+            newForm.subject.isValid &&
+            newForm.content.isValid
+        );
     };
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        const isFormValid = validateForm();
-
+        const isFormValid = validateForm(form);
         console.log(form);
-        let contactData = {
-            name: form.name.value,
-            email: form.email.value,
-            subject: form.subject.value,
-            content: form.content.value,
-        };
-        ServicesApi.sendMessage(contactData).then((res) => {
-            console.log(res);
-            setForm({
-                name: { value: "", isValid: false },
-                email: { value: "", isValid: false },
-                subject: { value: "", isValid: false },
-                content: { value: "", isValid: false },
-            });
-        });
+
+        if (form !== null) {
+            console.log(isFormValid);
+            if (isFormValid) {
+                let contactData = {
+                    name: form.name.value,
+                    email: form.email.value,
+                    subject: form.subject.value,
+                    content: form.content.value,
+                };
+                ServicesApi.sendMessage(contactData)
+                    .then((res) => {
+                        // console.log(res)
+                        setForm({
+                            name: { value: "", isValid: true },
+                            content: { value: "", isValid: true },
+                            email: { value: "", isValid: true },
+                            subject: { value: "", isValid: true },
+                        });
+                    })
+                    .catch((error) => console.log(error));
+            }
+        }
     };
 
     return (
@@ -147,6 +196,11 @@ const Contact: FunctionComponent = () => {
                                         id="name"
                                         placeholder="Votre Nom"
                                     />
+                                                      {/* error */}
+                  {form.name.error &&
+                  <div className="card-panel red accent-1"> 
+                   {form.name.error} 
+                  </div>} 
                                 </div>
                                 <div className="col-md-6 form-group mt-3 mt-md-0">
                                     <input
@@ -158,6 +212,11 @@ const Contact: FunctionComponent = () => {
                                         onChange={handleInputChange}
                                         value={form.email.value}
                                     />
+                                                      {/* error */}
+                  {form.email.error &&
+                  <div className="card-panel red accent-1"> 
+                   {form.email.error} 
+                  </div>} 
                                 </div>
                             </div>
                             <div className="form-group mt-3">
@@ -170,10 +229,15 @@ const Contact: FunctionComponent = () => {
                                     value={form.subject.value}
                                     placeholder="Sujet"
                                 />
+                                                  {/* error */}
+                  {form.subject.error &&
+                  <div className="card-panel red accent-1"> 
+                   {form.subject.error} 
+                  </div>} 
                             </div>
                             <div className="form-group mt-3">
                                 <input
-                                    // type="text"
+                                    type="text"
                                     className="form-control"
                                     name="content"
                                     id="content"
@@ -181,6 +245,11 @@ const Contact: FunctionComponent = () => {
                                     value={form.content.value}
                                     placeholder="Message"
                                 />
+                                                  {/* error */}
+                  {form.content.error &&
+                  <div className="card-panel red accent-1"> 
+                   {form.content.error} 
+                  </div>} 
                             </div>
 
                             <div className="my-3">
@@ -194,12 +263,6 @@ const Contact: FunctionComponent = () => {
                                 <button type="submit">Send Message</button>
                             </div>
                         </form>
-                        {/* error */}
-                        {form.name.error && (
-                            <div className="card-panel red accent-1">
-                                {form.name.error}
-                            </div>
-                        )}
                     </div>
                 </div>
             </div>

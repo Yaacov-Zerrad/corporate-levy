@@ -148,3 +148,52 @@
       console.log("sended");
 
     };
+
+
+    const validateForm = (form:any) => {
+        let newForm= form;
+
+
+        // Validator name
+        if(!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)) {
+            const errorMsg: string = 'Votre nom est requis (3-25).';
+            const newField: Field = { value: form.name.value, error: errorMsg, isValid: false };
+            newForm = { ...newForm, ...{ name: newField } };
+        } else {
+            const newField: Field = { value: form.name.value, error: '', isValid: true };
+            newForm = { ...newForm, ...{ name: newField } };
+        }
+        // Validator email
+        if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.email.value)) {
+            const errorMsg: string = 'Une address mail valid est requis';
+            const newField: Field = { value: form.email.value, error: errorMsg, isValid: false };
+            newForm = { ...newForm, ...{ name: newField } };
+        } else {
+            const newField: Field = { value: form.email.value, error: '', isValid: true };
+            newForm = { ...newForm, ...{ name: newField } };
+        }
+
+        // Validator subject
+        if(!/^[a-zA-Zàéè ]{3,25}$/.test(form.subject.value)) {
+            const errorMsg: string = 'Un sujet requis (3-25).';
+            const newField: Field = { value: form.subject.value, error: errorMsg, isValid: false };
+            newForm = { ...newForm, ...{ name: newField } };
+        } else {
+            const newField: Field = { value: form.subject.value, error: '', isValid: true };
+            newForm = { ...newForm, ...{ name: newField } };
+        }
+                        // Validator content
+                        if(!/^[a-zA-Zàéè ]{1,25}$/.test(form.content.value)) {
+                            const errorMsg: string = 'Un Message est requis.(min 10)';
+                            const newField: Field = { value: form.content.value, error: errorMsg, isValid: false };
+                            newForm = { ...newForm, ...{ name: newField } };
+                        } else {
+                            const newField: Field = { value: form.content.value, error: '', isValid: true };
+                            newForm = { ...newForm, ...{ name: newField } };
+                        }
+
+        setForm(newForm);
+        console.log(newForm);
+        
+        return newForm.name.isValid && newForm.email.isValid 
+    };
