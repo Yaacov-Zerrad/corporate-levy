@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import ServicesApi from "../services/get-api-address";
 
 // prepa for form
@@ -15,6 +16,8 @@ type Form = {
 };
 
 const Contact: FunctionComponent = () => {
+    const { state } = useSelector((state: any) =>{ return state});
+
     const [form, setForm] = useState<Form>({
         name: { value: null, isValid: true },
         email: { value: null, isValid: true },
@@ -33,7 +36,7 @@ const Contact: FunctionComponent = () => {
         setForm({ ...form, ...newField });
     };
     useEffect(() => {
-        // console.log(form);
+
     }, [form]);
 
     const validateForm = (form: any) => {
@@ -112,7 +115,7 @@ const Contact: FunctionComponent = () => {
         }
 
         setForm(newForm);
-        console.log(newForm);
+        // console.log(newForm);
 
         return (
             newForm.name.isValid &&
@@ -169,7 +172,7 @@ const Contact: FunctionComponent = () => {
                             <div className="email">
                                 <i className="bi bi-envelope"></i>
                                 <h4>Email:</h4>
-                                <p>RivkaNeurofeedback@gmail.com</p>
+                                <p>{state.email}</p>
                             </div>
 
                             <div className="phone">

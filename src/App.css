@@ -10,7 +10,23 @@
   padding-right: 100px;
   margin-bottom: 50px;
 }
+.link-tel {
+  color:#45505b;
+  
+}
+.link-tel:hover {
+}
+.descr-serv {
+  color:#45505b;
+  font-size: 20px;
 
+}
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(50%);
+    margin: -2em;
+}
+.carousel-indicators {display:none;}
 
 @media (max-width: 768px) {
   .img-bg .img-bg-inner {

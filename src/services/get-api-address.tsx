@@ -1,18 +1,7 @@
-// import Metric from "../models/metric";
-// axios
 import axios from "axios";
 
-// const instance = axios.create(
-//     {
-//             baseURL: "http://127.0.0.1/api",
-//             withCredentials: false,
-//             headers: {
-//               'Access-Control-Allow-Origin' : '*',
-//               'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',   
-//           }
-//       })
-// const apiUrl = "http://13.37.107.254";
-const apiUrl = "http://127.0.0.1:8000";
+let apiUrl = "http://127.0.0.1:8000";
+apiUrl = "https://api.neurofeedbackhypnosemarseille.fr";
 export default class ServicesApi {
 
 
@@ -35,7 +24,14 @@ export default class ServicesApi {
             .then((res) => (this.isEmpty(res) ? null : res.data))
             .catch((error) => this.handleError(error));
     }
+    static getTestimony(): Promise<any | null> {
 
+        return axios.get(`${apiUrl}/contact/testimony`)
+        // .then((response) => response.json())
+        .then((res) => (this.isEmpty(res) ? null : res.data))
+        .catch((error) => this.handleError(error));
+
+    }
     // static sendMessage(contact:any): Promise<any | null> {
         
     //     console.log(contact);

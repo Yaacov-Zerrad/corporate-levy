@@ -32,11 +32,7 @@ const ServicesList: FunctionComponent = () => {
                 <div className="section-title">
                     <h2>Services</h2>
                     <p>
-                        Magnam dolores commodi suscipit. Necessitatibus eius
-                        consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et
-                        nemo qui impedit suscipit alias ea. Quia fugiat sit in
-                        iste officiis commodi quidem hic quas.
+                    Dans notre clinique nous vous proposons du Neurofeedback de l'Hypnose et du NFT dans un moment de détente, de retour aux sources et aux sensations pour recalibrer votre cerveau de la meilleure manière possible.
                     </p>
                 </div>
                     {/* and class ---- portfolio-container */}
