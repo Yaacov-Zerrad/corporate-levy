@@ -1,15 +1,29 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ArticleDetail from "../pages/ArticleDetail";
 
 type Props = {
     data: any;
 };
 
 const ArticleCard: FunctionComponent<Props> = ({ data }) => {
-    useEffect(() => {
+    const navigate = useNavigate()
+    const [modal, setModal] = useState("modal-hidden");
+    // console.log(data);
 
-    });
+        // open detail
+        const openDetail = () => {
+            navigate(`/article/${data.id}`)
+            // console.log(modal);
+            // modal === "modal-display"?setModal("modal-hidden"):setModal("modal-display");
+        };
+    
+    useEffect(() => {});
     return (
-        <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+        <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" typeof="button" onClick={openDetail}>
+            {/* <div className={"modal " + modal} onClick={openDetail}>
+                <ArticleDetail key={data.id} data={data} />
+            </div> */}
             <div className="course-item">
                 <img src={data?.img} className="img-fluid" alt="..." />
                 <div className="course-content">
@@ -21,7 +35,7 @@ const ArticleCard: FunctionComponent<Props> = ({ data }) => {
                     </div>
 
                     <h3>
-                        <a href="course-details.html">{data?.title}</a>
+                        <a href="#">{data?.title}</a>
                     </h3>
                     <p>{data?.content}</p>
                     <div className="trainer d-flex justify-content-between align-items-center">
@@ -31,7 +45,7 @@ const ArticleCard: FunctionComponent<Props> = ({ data }) => {
                                 className="img-fluid"
                                 alt=""
                             />
-                            <span>Rivka</span>
+                            <span>{data?.edit}</span>
                         </div>
                         <div className="trainer-rank d-flex align-items-center">
                             {/* <i className="bx bx-user"></i>

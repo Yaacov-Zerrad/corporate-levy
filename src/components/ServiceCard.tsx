@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
 }
 
 const ServiceCard:FunctionComponent<Props> = ({data}) => {
-
+    const navigate = useNavigate()
     return (
         <div className="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div className="portfolio-wrap">
@@ -27,14 +28,15 @@ const ServiceCard:FunctionComponent<Props> = ({data}) => {
                                     >
                                         <i className="bx bx-plus"></i>
                                     </a> */}
-                                    <a
-                                        href="portfolio-details.html"
-                                        className="portfolio-details-lightbox"
+                                    <button
+                                    onClick={()=>navigate(`services/${data?.name}`)}
+                                        // href="portfolio-details.html"
+                                        className="portfolio-details-lightbox btn"
                                         data-glightbox="type: external"
                                         title="Portfolio Details"
                                     >
                                         <i className="bx bx-link"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>

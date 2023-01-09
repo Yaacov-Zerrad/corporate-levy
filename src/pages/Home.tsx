@@ -7,9 +7,12 @@ import Services from "../components/ServicesList";
 import LastPosts from "../components/LastPosts";
 
 const Home: FunctionComponent = () => {
+
     return (
         <div className="">
+
             <Header />
+
             <Services />
             <LastPosts />
             {/* <Facts /> */}

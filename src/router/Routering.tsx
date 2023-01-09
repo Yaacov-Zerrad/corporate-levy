@@ -16,7 +16,8 @@ const Routering: FunctionComponent = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/all" element={<AllPage />} />
                     <Route path="/articles" element={<ArticlesGallery />} />
-                    <Route path="/article/:idname" element={<ArticleDetail />} />
+                    <Route path="/services/:name" element={<ArticlesGallery />} />
+                    <Route path="/article/:id" element={<ArticleDetail />} />
 
                     {/* <Route path="/error" element={<Error />} /> */}
                 </Routes>

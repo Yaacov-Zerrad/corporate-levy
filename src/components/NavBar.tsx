@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { Outlet, Link } from "react-router-dom";
 
 
 const NavBar:FunctionComponent = () => {
-
+  
     return (
         <div className="">
               <i className="bi bi-list mobile-nav-toggle d-lg-none"></i>
@@ -14,9 +13,9 @@ const NavBar:FunctionComponent = () => {
     <ul>
       
       <li><a href="/" className="nav-link scrollto active"><i className="bx bx-home"></i> <span>Accueil</span></a></li>
+      <li><a href="/articles" className="nav-link scrollto"><i className="bx bx-file-blank"></i> <span>Articles</span></a></li>
       <li><a href="/#services" className="nav-link scrollto"><i className="bx bx-server"></i> <span>Services</span></a></li>
       {/* <li><a href="#about" className="nav-link scrollto"><i className="bx bx-user"></i> <span>About</span></a></li> */}
-      <li><a href="/articles" className="nav-link scrollto"><i className="bx bx-file-blank"></i> <span>Articles</span></a></li>
       <li><a href="/#testimonials" className="nav-link scrollto"><i className="bx bx-book-content"></i> <span>Temoignage</span></a></li>
       <li><a href="#contact" className="nav-link scrollto"><i className="bx bx-envelope"></i> <span>Contact</span></a></li>
     </ul>

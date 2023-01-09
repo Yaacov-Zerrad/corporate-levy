@@ -105,11 +105,205 @@
 
 
 
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 0px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.img-modal{
+text-align: center;
+padding-bottom: 1em;
+font-size: small;
+
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  /* border: 1px solid #888; */
+  width: 90%;
+  text-align: justify;
+  font-size: small;
+  box-shadow: 20px 20px 50px rgb(128, 128, 128);
+  border-radius: 20px;
+}
+.modal-hidden {
+  display: none;
+}
+.modal-display {
+  display: block;
+}
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 
 
+/*--------------------------------------------------------------
+# Events
+--------------------------------------------------------------*/
+.events .card {
+  border: 0;
+  padding: 0 30px;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.events .card-img {
+  width: calc(100% + 60px);
+  margin-left: -30px;
+  overflow: hidden;
+  z-index: 9;
+  border-radius: 0;
+}
+
+.events .card-img img {
+  max-width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.events .card-body {
+  z-index: 10;
+  background: #fff;
+  border-top: 4px solid #fff;
+  padding: 30px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  margin-top: -60px;
+  transition: 0.3s;
+}
+
+.events .card-title {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.events .card-title a {
+  color: #37423b;
+  transition: 0.3s;
+}
+
+.events .card-text {
+  color: #5e5e5e;
+}
+
+.events .read-more a {
+  color: #777777;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+.events .read-more a:hover {
+  color:#0563bb;
+}
+
+.events .card:hover img {
+  transform: scale(1.1);
+}
+
+.events .card:hover .card-body {
+  border-color: #0563bb;
+}
+
+.events .card:hover .card-body .card-title a {
+  color: #0563bb;
+}
 
 
+
+/*--------------------------------------------------------------
+# Courses
+--------------------------------------------------------------*/
+.courses .course-item {
+  border-radius: 5px;
+  border: 1px solid #eef0ef;
+}
+
+.courses .course-content {
+  padding: 15px;
+}
+
+.courses .course-content h3 {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.courses .course-content h3 a {
+
+  color: #404b54;
+  transition: 0.3s;
+}
+
+.courses .course-content h3 a:hover {
+  color: #0563bb;
+}
+
+.courses .course-content p {
+  font-size: 14px;
+  color: #606a75;
+}
+
+.courses .course-content h4 {
+  font-size: 14px;
+  background:#0563bb;
+  padding: 7px 14px;
+  color: #fff;
+  margin: 0;
+}
+
+.courses .course-content .price {
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: #606a75;
+}
+
+.courses .trainer {
+  padding-top: 15px;
+  border-top: 1px solid #eef0ef;
+}
+
+.courses .trainer .trainer-profile img {
+  max-width: 50px;
+  border-radius: 50px;
+}
+
+.courses .trainer .trainer-profile span {
+  padding-left: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #606a75;
+}
+
+.courses .trainer .trainer-rank {
+  font-size: 18px;
+
+  color: #606a75;
+}
 
 
 
