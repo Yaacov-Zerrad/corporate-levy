@@ -27,7 +27,7 @@ const ServicesList: FunctionComponent = () => {
         console.log(services.length);
     }, []);
     return (
-        <section id="portfolio" className="portfolio section-bg">
+        <section id="services" className="portfolio section-bg">
             <div className="container" data-aos="fade-up">
                 <div className="section-title">
                     <h2>Services</h2>
