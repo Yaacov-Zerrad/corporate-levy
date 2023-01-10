@@ -309,7 +309,28 @@ font-size: small;
 
 
 
+.video-responsive {
+  /* overflow: hidden;
+   padding-bottom: 56.25%;
+   height: 0; 
+   position: relative; */
+}
 
+.video-youtube  {
+
+   /* left: 0;
+  top: 0; */
+  /* height: 100%; 
+   width: 100%; */
+  /* position: absolute; */
+}
+@media screen and (max-width: 600px) {
+
+
+ .video-responsive {
+   width: 500px;
+ }
+}
 
 
 

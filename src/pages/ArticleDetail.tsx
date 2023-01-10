@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {useParams} from 'react-router-dom';
+import VideoCard from "../components/VideoCard";
 import ServicesApi from "../services/get-api-address";
 type Params = {
     data: any;
@@ -8,7 +9,7 @@ type Params = {
 
 const ArticleDetail: FunctionComponent= () => {
     const { posts } = useSelector((state: any) => state.posts);
-    const [post, setPost] = useState({title:null, content:null, added_date:null, img:''})
+    const [post, setPost] = useState({title:null, content:null, added_date:null, img:'',youtube_frame:null})
     // const post = posts?.map()
   const params = useParams();
     useEffect(()=>{
@@ -16,8 +17,9 @@ const ArticleDetail: FunctionComponent= () => {
             return obj.id == params.id
         })
         setPost(obj[0])
+        // console.log(post.youtube_frame );
         
-    })
+    }, [post])
     return (
 
 
@@ -31,10 +33,11 @@ const ArticleDetail: FunctionComponent= () => {
                 <div className="card">
 
                   <div className="card-img">
-                    <img src={post?.img} alt="..."/>
+                    {post.youtube_frame === '' || post.youtube_frame == null ?
+                     <img src={post?.img} alt="..."/> : <VideoCard youtubeFrame={post?.youtube_frame} />}
+                    
                   </div>
                   <div className="card-body">
-
                     <h5 className="card-title">{post?.title}</h5>
                     <p className="fst-italic text-center">{post?.added_date}</p>
                     <p className="card-text">{post?.content}</p>
