@@ -2,13 +2,17 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const NavBar: FunctionComponent = () => {
     const [width, setWidth] = useState<number>(window.innerWidth);
-
+    // const navigate = useNavigate()
     function handleWindowSizeChange() {
         setWidth(window.innerWidth);
     }
+    const navigTo = (to: string) => {
+        // navigate(to)
+    };
     useEffect(() => {
         console.log(isMobile);
         window.addEventListener("resize", handleWindowSizeChange);
@@ -30,50 +34,51 @@ const NavBar: FunctionComponent = () => {
                         <nav id="navbar" className="navbar nav-menu">
                             <ul>
                                 <li>
-                                    <a
-                                        href="/"
+                                    <Link
                                         className="nav-link scrollto active"
+                                        to="/"
                                     >
                                         <i className="bx bx-home"></i>{" "}
                                         <span>Accueil</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a
-                                        href="/articles"
+                                    <Link
                                         className="nav-link scrollto"
+                                        to="/articles"
                                     >
                                         <i className="bx bx-file-blank"></i>{" "}
                                         <span>Articles</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a
-                                        href="/#services"
+                                    <Link
                                         className="nav-link scrollto"
+                                        to="/services"
                                     >
                                         <i className="bx bx-server"></i>{" "}
                                         <span>Services</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 {/* <li><a href="#about" className="nav-link scrollto"><i className="bx bx-user"></i> <span>About</span></a></li> */}
+
                                 <li>
-                                    <a
-                                        href="/#testimonials"
+                                    {/* <Link
                                         className="nav-link scrollto"
+                                        to="#testimonials"
                                     >
                                         <i className="bx bx-book-content"></i>{" "}
                                         <span>Temoignage</span>
-                                    </a>
+                                    </Link> */}
                                 </li>
                                 <li>
-                                    <a
-                                        href="#contact"
+                                    <Link
                                         className="nav-link scrollto"
+                                        to="/contact"
                                     >
                                         <i className="bx bx-envelope"></i>{" "}
                                         <span>Contact</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </nav>
@@ -88,31 +93,36 @@ const NavBar: FunctionComponent = () => {
                             {/* <header id="header" className="d-flex flex-column justify-content-center"> */}
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="me-auto">
-                                    <Nav.Link href="/">
-                                        <i className="bx bx-home"></i>{" "}
+                                    <Nav.Link >
+                                    <Link to="/articles">
+                                    <i className="bx bx-home"></i>{" "}
                                         <span>Accueil</span>
+                                        </Link>
+
                                     </Nav.Link>
                                     <Nav.Link
                                         href="/articles"
                                         className="nav-link scrollto"
                                     >
-                                        <i className="bx bx-file-blank"></i>{" "}
-                                        <span>Articles</span>
+                                        <Link to="/articles">
+                                            <i className="bx bx-file-blank"></i>{" "}
+                                            <span>Articles</span>
+                                        </Link>
                                     </Nav.Link>
                                     <Nav.Link
-                                        href="/#services"
+                                        href="/services"
                                         className="nav-link scrollto"
                                     >
                                         <i className="bx bx-server"></i>{" "}
                                         <span>Services</span>
                                     </Nav.Link>
-                                    <Nav.Link
+                                    {/* <Nav.Link
                                         href="/#testimonials"
                                         className="nav-link scrollto"
                                     >
                                         <i className="bx bx-book-content"></i>{" "}
                                         <span>Temoignage</span>
-                                    </Nav.Link>
+                                    </Nav.Link> */}
                                     <Nav.Link
                                         href="#contact"
                                         className="nav-link scrollto"

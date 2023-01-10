@@ -27,7 +27,11 @@
     margin: -2em;
 }
 .carousel-indicators {display:none;}
-
+.carousel-control-prev-icon {
+  color: red !important;
+  
+  /* background-color: #fff; */
+}
 @media (max-width: 768px) {
   .img-bg .img-bg-inner {
     padding-left: 30px;

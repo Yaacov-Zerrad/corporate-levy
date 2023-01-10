@@ -8,6 +8,7 @@ type Params = {
 };
 
 const ArticleDetail: FunctionComponent= () => {
+  window.scrollTo(0, 0);
     const { posts } = useSelector((state: any) => state.posts);
     const [post, setPost] = useState({title:null, content:null, added_date:null, img:'',youtube_frame:null})
     // const post = posts?.map()

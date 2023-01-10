@@ -16,19 +16,28 @@ const ArticlesGallery: FunctionComponent = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const { posts } = useSelector((state: any) => state.posts);
+    const { services } = useSelector((state: any) => state.services);
+    window.scrollTo(0, 0);
+    const [state, setState ] = useState<any>({title:'Articles',description:null})
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-        ServicesApi.getPosts().then((data) => {
+
             if (Object.keys(params).length !== 0) {
-                const obj = data.filter((obj: any) => {
+                const obj = posts.filter((obj: any) => {
                     return obj.service.name == params.name;
                 });
                 dispatch(setPosts(obj));
+                const objs = services.filter((objs: any) => {
+                    return objs.name == params.name
+                });
+                console.log(services);
+                console.log(objs[0].description);
+                
+                setState({ title:objs[0].name, description:objs[0].description})
             } else {
-                dispatch(setPosts(data));
+                // dispatch(setPosts(data));
             }
-        });
+        // });
     }, []);
 
     return (
@@ -43,6 +52,12 @@ const ArticlesGallery: FunctionComponent = () => {
                 </button> */}
                 {/* <!-- ======= Courses Section ======= --> */}
                 <section id="courses" className="courses">
+                <div className="section-title">
+                    <h2>{state.title}</h2>
+                    <p>
+                        {state.description}
+                    </p>
+                </div>
                     <div className="container" data-aos="fade-up">
                         <div
                             className="row"

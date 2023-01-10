@@ -16,7 +16,8 @@ const ServiceCard:FunctionComponent<Props> = ({data}) => {
                                 className="img-fluid"
                                 alt="dfsg"
                             />
-                            <div className="portfolio-info">
+                                   
+                            <div className="portfolio-info"  onClick={()=>navigate(`/services/${data?.name}`)}>
                                 <h4>{data?.name}</h4>
                                 <p>{data?.description}</p>
                                 <div className="portfolio-links">
@@ -29,7 +30,6 @@ const ServiceCard:FunctionComponent<Props> = ({data}) => {
                                         <i className="bx bx-plus"></i>
                                     </a> */}
                                     <button
-                                    onClick={()=>navigate(`services/${data?.name}`)}
                                         // href="portfolio-details.html"
                                         className="portfolio-details-lightbox btn"
                                         data-glightbox="type: external"

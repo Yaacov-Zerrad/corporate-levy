@@ -16,6 +16,8 @@ type Form = {
 };
 
 const Contact: FunctionComponent = () => {
+  window.scrollTo(0, 0);
+
     const { state } = useSelector((state: any) =>{ return state});
 
     const [form, setForm] = useState<Form>({

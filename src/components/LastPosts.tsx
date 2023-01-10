@@ -1,12 +1,15 @@
 import React, { FunctionComponent, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setPosts } from "../features/postsSlice";
 import ServicesService from "../services/get-api-address";
 
 
 const LastPosts: FunctionComponent = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+
     const { posts } = useSelector((state: any) => state.posts);
 
 
@@ -64,21 +67,21 @@ const LastPosts: FunctionComponent = () => {
 
                             {/* loop */}
                             {posts?.map((post: any) => (
-                            <Carousel.Item>
-                                <a
+                            <Carousel.Item   onClick={()=>navigate(`article/${post?.id}`)}>
+                                {/* <a
                                     href="#"
-                                    className="img-bg d-flex align-items-end"
+                                    className="img-bg d-flex align-items-end" 
                                     // style={{
                                     //     backgroundImage:
                                     //         "url('./images/post-slide-3.jpg')",
                                     // }}
-                                >
+                                // >*/}
                                     <img
                                         src={post.img}
                                         className="img-fluid"
                                         alt=""
                                     ></img>
-                                </a>
+                                 {/* </a> */}
 
                                 <Carousel.Caption>
                                     <h3>{post.title}</h3>
