@@ -6,22 +6,20 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 const NavBar: FunctionComponent = () => {
     const [width, setWidth] = useState<number>(window.innerWidth);
-    // const navigate = useNavigate()
+
     function handleWindowSizeChange() {
         setWidth(window.innerWidth);
     }
-    const navigTo = (to: string) => {
-        // navigate(to)
-    };
+    const isMobile = width <= 768;
+
     useEffect(() => {
-        console.log(isMobile);
+        // console.log(isMobile);
         window.addEventListener("resize", handleWindowSizeChange);
         return () => {
             window.removeEventListener("resize", handleWindowSizeChange);
         };
     }, []);
 
-    const isMobile = width <= 768;
 
     return (
         <div>
@@ -57,7 +55,7 @@ const NavBar: FunctionComponent = () => {
                                         to="/services"
                                     >
                                         <i className="bx bx-server"></i>{" "}
-                                        <span>Services</span>
+                                        <span>Présentations</span>
                                     </Link>
                                 </li>
                                 {/* <li><a href="#about" className="nav-link scrollto"><i className="bx bx-user"></i> <span>About</span></a></li> */}
@@ -87,14 +85,14 @@ const NavBar: FunctionComponent = () => {
             ) : (
                 <div className="">
                     {/* <i className="bi bi-list mobile-nav-toggle d-lg-none"></i> */}
-                    <Navbar collapseOnSelect expand="lg">
+                    <Navbar collapseOnSelect expand="lg" style={{background:'rgba(0, 0, 0, .15)'}}  >
                         <Container>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                             {/* <header id="header" className="d-flex flex-column justify-content-center"> */}
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="me-auto">
                                     <Nav.Link >
-                                    <Link to="/articles">
+                                    <Link to="/">
                                     <i className="bx bx-home"></i>{" "}
                                         <span>Accueil</span>
                                         </Link>
@@ -114,7 +112,7 @@ const NavBar: FunctionComponent = () => {
                                         className="nav-link scrollto"
                                     >
                                         <i className="bx bx-server"></i>{" "}
-                                        <span>Services</span>
+                                        <span>Présentations</span>
                                     </Nav.Link>
                                     {/* <Nav.Link
                                         href="/#testimonials"

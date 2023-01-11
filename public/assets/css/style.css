@@ -729,7 +729,35 @@ section {
   bottom: 15px;
   right: 15px;
 }
+@media only screen and (max-width: 600px) {
 
+
+.portfolio .portfolio-wrap .portfolio-links a:hover {
+  color: #148af9;
+}
+
+.portfolio .portfolio-wrap {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap .portfolio-info {
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap .portfolio-info::before {
+  top: 15px;
+  left: 15px;
+}
+
+.portfolio .portfolio-wrap .portfolio-info::after {
+  bottom: 15px;
+  right: 15px;
+}
+}
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/

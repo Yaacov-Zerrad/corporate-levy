@@ -13,9 +13,9 @@ const Footer:FunctionComponent = () => {
           Praticienne diplômée de l'Institut Zengar, Neuroptimal, avec plus de 5 ans d'expérience dans neurofeedback, hypnose, eft vous propose plusieurs techniques pour résoudre vos problèmes de toutes natures.
           </p>
           <div className="social-links">
-            <a href="https://wa.me/33697047951" target='_blank' ><i className="bx bxl-whatsapp"></i></a>
-            <a href="tel:+33697047951" target='_blank' ><i className="bx bx-phone"></i></a>
-            <a href="sms:+33697047951"  target='_blank' ><i className="bx bxs-chat"></i></a>
+            <a href="https://wa.me/33695047951" target='_blank' ><i className="bx bxl-whatsapp"></i></a>
+            <a href="tel:+33695047951" target='_blank' ><i className="bx bx-phone"></i></a>
+            <a href="sms:+33695047951"  target='_blank' ><i className="bx bxs-chat"></i></a>
             <a href={"mailto:"+state.email} target='_blank' ><i className="bx bxl-gmail"></i></a>
           </div>
           <div className="copyright">

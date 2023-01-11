@@ -15,6 +15,7 @@ const Routering: FunctionComponent = () => {
     return (
         <div className="router">
             <Router>
+            <NavBar />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/all" element={<AllPage />} />
@@ -27,7 +28,6 @@ const Routering: FunctionComponent = () => {
                     {/* <Route path="/error" element={<Error />} /> */}
                 </Routes>
 
-            <NavBar />
             </Router>
         </div>
     );

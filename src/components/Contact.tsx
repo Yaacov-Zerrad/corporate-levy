@@ -180,7 +180,7 @@ const Contact: FunctionComponent = () => {
                             <div className="phone">
                                 <i className="bi bi-phone"></i>
                                 <h4>Mobile:</h4>
-                                <p>+33 6 97 04 79 51</p>
+                                <p>+33 6 95 04 79 51</p>
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ export const stateSlice = createSlice({
     name:'state',
     initialState:{
         email:'rivkalevynf@gmail.com',
-        mobile:'+33697047951',
+        mobile:'+33695047951',
        
     },
     reducers:{
