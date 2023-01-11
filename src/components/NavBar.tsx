@@ -2,10 +2,14 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { setServices } from "../features/servicesSlice";
+import ServicesApi from "../services/get-api-address";
 const NavBar: FunctionComponent = () => {
     const [width, setWidth] = useState<number>(window.innerWidth);
+    const dispatch = useDispatch();
 
     function handleWindowSizeChange() {
         setWidth(window.innerWidth);
@@ -13,7 +17,12 @@ const NavBar: FunctionComponent = () => {
     const isMobile = width <= 768;
 
     useEffect(() => {
-        // console.log(isMobile);
+        // console.log(isMobile);     
+        // ServicesApi.getServices().then((data) => {
+        //   //   console.log(data);
+  
+        //   dispatch(setServices(data));
+        // });
         window.addEventListener("resize", handleWindowSizeChange);
         return () => {
             window.removeEventListener("resize", handleWindowSizeChange);

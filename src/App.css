@@ -323,10 +323,10 @@ font-size: small;
 .video-youtube  {
 
    /* left: 0;
-  top: 0; */
-  /* height: 100%; 
-   width: 100%; */
-  /* position: absolute; */
+  top: 0; 
+  height: 100%; 
+   width: 100%; 
+   position: absolute; */
 }
 @media screen and (max-width: 600px) {
 

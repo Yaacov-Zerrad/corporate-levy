@@ -19,6 +19,7 @@ const ArticlesGallery: FunctionComponent = () => {
     const { services } = useSelector((state: any) => state.services);
     window.scrollTo(0, 0);
     const [state, setState ] = useState<any>({title:'Articles',description:null})
+    const [postFilter, setPostFilter ] = useState<any>()
 
     useEffect(() => {
 
@@ -26,7 +27,7 @@ const ArticlesGallery: FunctionComponent = () => {
                 const obj = posts.filter((obj: any) => {
                     return obj.service.name == params.name;
                 });
-                dispatch(setPosts(obj));
+                setPostFilter(obj);
                 const objs = services.filter((objs: any) => {
                     return objs.name == params.name
                 });
@@ -35,6 +36,7 @@ const ArticlesGallery: FunctionComponent = () => {
                 
                 setState({ title:objs[0].name, description:objs[0].description})
             } else {
+                setPostFilter(posts);
                 // dispatch(setPosts(data));
             }
         // });
@@ -64,7 +66,7 @@ const ArticlesGallery: FunctionComponent = () => {
                             data-aos="zoom-in"
                             data-aos-delay="100"
                         >
-                            {posts?.map((post: any) => (
+                            {postFilter?.map((post: any) => (
                                 <ArticleCard key={post.id} data={post} />
                             ))}
                         </div>

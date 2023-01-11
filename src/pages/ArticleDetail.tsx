@@ -32,17 +32,17 @@ const ArticleDetail: FunctionComponent= () => {
             <div className="row justify-content-center">
               <div className="col-md-8 d-flex align-items-stretch">
                 <div className="card">
-
+{post.youtube_frame === '' || post.youtube_frame == null ?<>
                   <div className="card-img">
-                    {post.youtube_frame === '' || post.youtube_frame == null ?
-                     <img src={post?.img} alt="..."/> : <VideoCard youtubeFrame={post?.youtube_frame} />}
+                    
+                     <img src={post?.img} alt="..."/> 
                     
                   </div>
                   <div className="card-body">
                     <h5 className="card-title">{post?.title}</h5>
                     <p className="fst-italic text-center">{post?.added_date}</p>
                     <p className="card-text">{post?.content}</p>
-                  </div>
+                  </div></>:< div style={{zIndex:2}} ><VideoCard youtubeFrame={post?.youtube_frame} /> </div>}
                 </div>
               </div>
               {/* <div className="col-md-6 d-flex align-items-stretch">

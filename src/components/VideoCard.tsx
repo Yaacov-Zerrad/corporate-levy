@@ -24,6 +24,7 @@ const VideoCard: FunctionComponent<Props> = ({ youtubeFrame }) => {
     return (
         <div className="video-responsive">
             <iframe
+            
             className="video-youtube "
                 width={youtubeSize.width}
                 height={youtubeSize.height}

@@ -9,6 +9,7 @@ import NavBar from './components/NavBar';
 import { useDispatch } from 'react-redux';
 import ServicesApi from './services/get-api-address';
 import { setServices } from './features/servicesSlice';
+import { setPosts } from './features/postsSlice';
 
 
 function App() {
@@ -19,6 +20,11 @@ function App() {
 
         dispatch(setServices(data));
     });
+    ServicesApi.getPosts().then((data) => {
+      console.log(data);
+
+      dispatch(setPosts(data));
+  });
     // console.log(services);
     // console.log(services.length);
 }, []);
