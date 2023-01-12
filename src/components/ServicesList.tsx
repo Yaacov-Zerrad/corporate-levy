@@ -10,22 +10,8 @@ const ServicesList: FunctionComponent = () => {
     window.scrollTo(0, 0);
 
     const { services } = useSelector((state: any) => state.services);
-
-    // axios.defaults.baseURL = 'http://127.0.0.1:8000'
-    // fetch("http://127.0.0.1:8000/api/services")
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         console.log(data)
-    //     });
-
     useEffect(() => {
-        // ServicesService.getServices().then((data) => {
-        //     //   console.log(data);
 
-        //     dispatch(setServices(data));
-        // });
-        console.log(services);
-        console.log(services.length);
     }, []);
     return (
         <section id="services" className="portfolio section-bg">

@@ -21,7 +21,7 @@ function App() {
         dispatch(setServices(data));
     });
     ServicesApi.getPosts().then((data) => {
-      console.log(data);
+      // console.log(data);
 
       dispatch(setPosts(data));
   });

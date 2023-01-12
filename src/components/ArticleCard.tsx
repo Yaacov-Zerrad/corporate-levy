@@ -1,6 +1,7 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import ArticleDetail from "../pages/ArticleDetail";
+
+import ServicesApi from "../services/get-api-address";
 
 type Props = {
     data: any;
@@ -8,7 +9,7 @@ type Props = {
 
 const ArticleCard: FunctionComponent<Props> = ({ data }) => {
     const navigate = useNavigate()
-    const [modal, setModal] = useState("modal-hidden");
+    // const [modal, setModal] = useState("modal-hidden");
     // console.log(data);
 
         // open detail
@@ -19,6 +20,12 @@ const ArticleCard: FunctionComponent<Props> = ({ data }) => {
         };
     
     useEffect(() => {});
+    const addHeart = ()=>{
+        ServicesApi.addHeart(data.id).then((res) =>{
+            console.log(res)
+        }
+        )
+    }
     return (
         <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" typeof="button" onClick={openDetail}>
             {/* <div className={"modal " + modal} onClick={openDetail}>
@@ -50,8 +57,8 @@ const ArticleCard: FunctionComponent<Props> = ({ data }) => {
                         <div className="trainer-rank d-flex align-items-center">
                             {/* <i className="bx bx-user"></i>
                         &nbsp;35 &nbsp;&nbsp; */}
-                            <i className="bx bx-heart"></i>
-                            &nbsp;42
+                            <i onClick={addHeart} className="bx bx-heart"></i>
+                            &nbsp;{data?.heart}
                         </div>
                     </div>
                 </div>

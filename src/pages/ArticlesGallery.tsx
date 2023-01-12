@@ -1,19 +1,14 @@
 import React, {
     FunctionComponent,
-    useCallback,
     useEffect,
     useState,
 } from "react";
 import Contact from "../components/Contact";
-import { useDispatch, useSelector } from "react-redux";
-import ServicesApi from "../services/get-api-address";
+import {  useSelector } from "react-redux";
 import ArticleCard from "../components/ArticleCard";
-import { setPosts } from "../features/postsSlice";
-import ArticleDetail from "../pages/ArticleDetail";
 import { useParams } from "react-router-dom";
 
 const ArticlesGallery: FunctionComponent = () => {
-    const dispatch = useDispatch();
     const params = useParams();
     const { posts } = useSelector((state: any) => state.posts);
     const { services } = useSelector((state: any) => state.services);
@@ -25,11 +20,11 @@ const ArticlesGallery: FunctionComponent = () => {
 
             if (Object.keys(params).length !== 0) {
                 const obj = posts.filter((obj: any) => {
-                    return obj.service.name == params.name;
+                    return obj.service.name === params.name;
                 });
                 setPostFilter(obj);
                 const objs = services.filter((objs: any) => {
-                    return objs.name == params.name
+                    return objs.name === params.name
                 });
                 console.log(services);
                 console.log(objs[0].description);

@@ -15,12 +15,12 @@ const LastPosts: FunctionComponent = () => {
 
     useEffect(() => {
         ServicesService.getPosts().then((data) => {
-            console.log(data);
+            // console.log(data);
 
             dispatch(setPosts(data));
         });
-        console.log(posts);
-        console.log(posts.length);
+        // console.log(posts);
+        // console.log(posts.length);
     }, []);
     return (
         <section id="hero-slider" className="hero-slider">

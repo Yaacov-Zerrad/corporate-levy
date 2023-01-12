@@ -10,17 +10,27 @@ type Params = {
 const ArticleDetail: FunctionComponent= () => {
   window.scrollTo(0, 0);
     const { posts } = useSelector((state: any) => state.posts);
-    const [post, setPost] = useState({title:null, content:null, added_date:null, img:'',youtube_frame:null})
+    const [post, setPost] = useState({title:null,heart:null, content:null, added_date:null, img:'',youtube_frame:null})
     // const post = posts?.map()
+    const [rerender, setRerender] = useState(false);
   const params = useParams();
     useEffect(()=>{
         const obj = posts.filter((obj: any) => {
             return obj.id == params.id
         })
         setPost(obj[0])
-        // console.log(post.youtube_frame );
-        
-    }, [post])
+
+    }, [])
+
+
+    const addHeart = ()=>{
+      ServicesApi.addHeart(post).then((res) =>{
+        setPost(res)
+
+      }
+      )
+  }
+
     return (
 
 
@@ -40,6 +50,12 @@ const ArticleDetail: FunctionComponent= () => {
                   </div>
                   <div className="card-body">
                     <h5 className="card-title">{post?.title}</h5>
+                    <div className="trainer-rank d-flex align-items-center">
+                            {/* <i className="bx bx-user"></i>
+                        &nbsp;35 &nbsp;&nbsp; */}
+                            <i onClick={addHeart} className="bx bx-heart"></i>
+                            &nbsp;{post?.heart}
+                        </div>
                     <p className="fst-italic text-center">{post?.added_date}</p>
                     <p className="card-text">{post?.content}</p>
                   </div></>:< div style={{zIndex:2}} ><VideoCard youtubeFrame={post?.youtube_frame} /> </div>}

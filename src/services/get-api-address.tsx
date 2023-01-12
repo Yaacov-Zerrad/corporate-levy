@@ -1,36 +1,40 @@
 import axios from "axios";
 
 let apiUrl = "http://127.0.0.1:8000";
-apiUrl = "https://api.neurofeedbackhypnosemarseille.fr";
+// apiUrl = "https://api.neurofeedbackhypnosemarseille.fr";
 export default class ServicesApi {
 
 
     static getServices(): Promise<any | null> {
-        // static getMetrics(address: any): Promise<Metric|any|null> {
-        console.log('caller');
-        
+
         return axios.get(`${apiUrl}/services/`)
-            // .then((response) => response.json())
             .then((res) => (this.isEmpty(res) ? null : res.data))
             .catch((error) => this.handleError(error));
     }
 
     static getPosts(): Promise<any | null> {
-        // static getMetrics(address: any): Promise<Metric|any|null> {
-        console.log('caller');
+
         
         return axios.get(`${apiUrl}/services-posts/`)
-            // .then((response) => response.json())
+
             .then((res) => (this.isEmpty(res) ? null : res.data))
             .catch((error) => this.handleError(error));
     }
     static getTestimony(): Promise<any | null> {
 
         return axios.get(`${apiUrl}/contact/testimony`)
-        // .then((response) => response.json())
+
         .then((res) => (this.isEmpty(res) ? null : res.data))
         .catch((error) => this.handleError(error));
 
+    }
+
+    static addHeart(data:any):Promise<any | null> {
+        let heart = data.heart + 1
+        let datat = {title:data.title, content:data.content,heart:heart}
+        return axios.put(`${apiUrl}/services-posts/${data.id}/`,datat)
+        .then((res) => (this.isEmpty(res) ? null : res.data))
+        .catch((error) => this.handleError(error));
     }
     // static sendMessage(contact:any): Promise<any | null> {
         
@@ -49,7 +53,6 @@ export default class ServicesApi {
 
 
     static sendMessage(contact:any): Promise<any | null> {
-        console.log(contact);
         
         return axios.post(`${apiUrl}/contact/send-message`, contact)
         .then((res) => {
@@ -68,25 +71,5 @@ export default class ServicesApi {
         console.error(error);
     }
 
-    // static dataPrepa(res:any) {
-    //   // console.log(res);
-
-    //     let metric: Metric[] = [
-    //         {isLink:false, name:'Name', value:res.name !== null? res.name : 'No find'},
-    //         {isLink:false, name:'Symbol', value: res.symbol !== null? res.symbol: 'No find'},
-    //         {isLink:false, name:'First Transfer Date', value: res.firstTransferDate !== null?  res.firstTransferDate: null} ,
-    //         {isLink:false, name:'Last Transfer Date', value: res.lastTransferDate !== null?  res.lastTransferDate: null} ,
-    //         {isLink:false, name:'Nb Of Transfers', value: res.nbOfTransfer !== null? res.nbOfTransfer: null },
-    //         {isLink:false, name:'Top Holders Repartition', value: res.holdersRepartition !== null? res.holdersRepartition.toFixed(2): null },
-    //         {isLink:false, name:'Nb Of Holders', value: res.db !== null? res.db.uniqHolderNb: null },
-    //         {isLink:false, name:'Description', value: res.db !== null? res.db.description:null },
-    //         {isLink:true, name:'Official Website', value: res.db !== null? res.db.official_website_url:null },
-    //         {isLink:true, name:'Twitter', value: res.db !== null? res.db.official_website_url:null },
-    //         {isLink:true, name:'Discord', value: res.db !== null? res.db.discord_url:null },
-    //         {name: "status",  value: res.db !== null? define_status(res.db.is_scam) : 'Not Certified'}
-
-    //       ]
-    //       return metric
-    //     }
 }
 
